@@ -17,7 +17,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onSubmit() {
-    console.log(this.user);
+  onSubmit(form: any) {
+    this._authService.crearusuario(this.user);
   }
 }
