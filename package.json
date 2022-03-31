@@ -21,12 +21,14 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.19.2",
     "express": "^4.17.3",
+    "jwt-simple": "^0.5.6",
     "moment": "^2.29.1",
-    "mongoose": "^6.2.8",
+    "mongoose": "^6.2.9",
     "mongoose-pagination": "^1.0.0",
     "validator": "^13.7.0"
   },
   "devDependencies": {
+    "@types/bcrypt-nodejs": "0.0.31",
     "nodemon": "^2.0.15"
   }
 }

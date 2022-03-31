@@ -2,7 +2,7 @@
 
 var mongoose = require("mongoose");
 var app = require("./app");
-var port = 3800;
+var port = 3700;
 
 mongoose.Promise = global.Promise;
 mongoose
@@ -11,6 +11,6 @@ mongoose
     console.log("La conexión a la BBDD se ha realizado correctamente");
 
     app.listen(port, () => {
-      console.log("Servidor corriendo en http://localhost:3800");
+      console.log("Servidor corriendo en http://localhost:3700");
     });
   });

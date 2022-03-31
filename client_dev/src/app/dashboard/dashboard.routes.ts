@@ -5,6 +5,7 @@ import { IngresoEgresoComponent } from '../ingreso-egreso/ingreso-egreso.compone
 
 export const dashboardRoutes: Routes = [
   { path: '', component: EstadisticasComponent },
+  { path: 'inicio', component: EstadisticasComponent },
   { path: 'ingreso-egreso', component: IngresoEgresoComponent },
   { path: 'detalle', component: DetalleComponent },
 ];

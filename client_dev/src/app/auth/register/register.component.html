@@ -4,6 +4,16 @@
       <div class="col-lg-4 mx-auto">
         <h2 class="text-center mb-4">Registro</h2>
         <div class="auto-form-wrapper">
+          <div class="alert alert-success mt-3"
+               *ngIf="status == 'success'">
+            El registro se ha completado correctamente
+          </div>
+
+          <div class="alert alert-danger mt-3"
+               *ngIf="status == 'error'">
+            El registro no se ha completado<br />
+            <span>{{message}}</span>
+          </div>
           <form #registerForm="ngForm"
                 (ngSubmit)="onSubmit(registerForm)">
             <div class="form-group">
