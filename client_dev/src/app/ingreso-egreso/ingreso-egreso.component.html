@@ -2,43 +2,92 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Agregar Ingreso / Egreso</h4>
+        <h4 class="card-title">{{page_title}}</h4>
         <p class="card-description">
           Especifique el monto y el tipo
         </p>
+        <div class="alert alert-success mt-3"
+             *ngIf="status == 'success'">
+          La operación se ha realizado correctamente
+        </div>
 
-        <form>
+        <div class="alert alert-danger mt-3"
+             *ngIf="status == 'error'">
+          La operación no se ha completado<br />
+          <span>{{message}}</span>
+        </div>
+        <form #ingresoEgresoForm="ngForm"
+              (ngSubmit)="onSubmit(ingresoEgresoForm)">
 
           <div class="form-group">
             <label>Descripción</label>
             <input type="text"
                    class="form-control"
+                   #description="ngModel"
+                   [(ngModel)]="ingresoEgreso.description"
                    placeholder="Descripción"
-                   name="descripcion">
+                   name="description"
+                   required>
+            <span *ngIf="!description.valid && description.touched">
+              El nombre no es válido
+            </span>
           </div>
 
           <div class="form-group">
-            <label>Monto</label>
+            <label>Categoríaa</label>
+            <input type="text"
+                   class="form-control"
+                   #category="ngModel"
+                   [(ngModel)]="ingresoEgreso.category"
+                   placeholder="Categoría"
+                   name="category"
+                   required>
+          </div>
+
+          <div class="form-group">
+            <label>Importe</label>
             <input type="number"
                    class="form-control"
-                   placeholder="Monto"
-                   name="monto">
-            <p>
-              Debe de ser un monto positivo
-            </p>
+                   #amount="ngModel"
+                   [(ngModel)]="ingresoEgreso.amount"
+                   placeholder="Importe"
+                   name="amount"
+                   required>
+            <span *ngIf="!amount.valid && amount.touched">
+              El importe no es válido
+            </span>
           </div>
 
           <div class="form-group">
             <label>Tipo</label>
-            <br>
-            <button type="button"
-                    class="btn btn-primary btn-block">Ingreso</button>
-            <!-- <button type="button" class="btn btn-warning btn-block">Egreso</button> -->
+            <select class="form-control"
+                    #type="ngModel"
+                    [(ngModel)]="ingresoEgreso.type"
+                    placeholder="Tipo"
+                    name="type"
+                    required>
+              <option value="ingreso">Ingreso</option>
+              <option value="egreso">Egreso</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Fecha</label>
+            <input type="date"
+                   name="date"
+                   class="form-control"
+                   #date="ngModel"
+                   [(ngModel)]="ingresoEgreso.date"
+                   required />
+            <span *ngIf="!date.valid && date.touched">
+              La fecha no es válida
+            </span>
           </div>
 
           <hr>
-          <button type="button"
-                  class="btn btn-success mr-2">
+          <button type="submit"
+                  class="btn btn-success mr-2"
+                  [disabled]="ingresoEgresoForm.invalid">
             <i class="fa fa-save"></i>
             Agregar
           </button>
