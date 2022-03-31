@@ -1,6 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { AppState } from '../app.reducer';
+import * as authActions from '../auth/auth.actions';
 import { User } from '../models/user';
 import { Global } from './Global';
 
@@ -9,10 +12,10 @@ import { Global } from './Global';
 })
 export class AuthService {
   public url: string;
-  public identity: string = '';
+  public identity: any = '';
   public token: string = '';
 
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient, private store: Store<AppState>) {
     this.url = Global.url;
   }
 
@@ -43,7 +46,9 @@ export class AuthService {
       identity != undefined
     ) {
       this.identity = identity;
+      this.store.dispatch(authActions.setUser({ user: this.identity }));
     } else {
+      this.store.dispatch(authActions.unSetUser());
       this.identity = '';
     }
 
