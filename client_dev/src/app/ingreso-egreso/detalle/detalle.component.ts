@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/app.reducer';
 import { IngresoEgreso } from 'src/app/models/ingreso-egreso';
 import { AuthService } from 'src/app/services/auth.service';
 import { IngresoEgresoService } from 'src/app/services/ingreso-egreso.service';
+import { AppStateWithIngresoEgreso } from '../ingreso-egreso.reducer';
 
 @Component({
   selector: 'app-detalle',
@@ -14,7 +14,7 @@ export class DetalleComponent implements OnInit {
   ingresosEgresos: IngresoEgreso[] = [];
   public token: string = '';
   constructor(
-    private store: Store<AppState>,
+    private store: Store<AppStateWithIngresoEgreso>,
     private _ingresoEgresoService: IngresoEgresoService,
     private _authService: AuthService
   ) {
