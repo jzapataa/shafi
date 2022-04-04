@@ -2,3 +2,15 @@
 .cursor:hover {
   cursor: pointer;
 }
+
+.ingreso-detalle{
+  color: #0f5132 !important;
+  background-color: #d1e7dd !important;
+  border-color: #dadbcc !important;
+}
+
+.egreso-detalle{
+  color: #a94442 !important;
+  background-color: #f2dede !important;
+  border-color: #ebccd1 !important;
+}

@@ -1,0 +1,11 @@
+.ingreso-detalle{
+  color: #0f5132;
+  background-color: #d1e7dd;
+  border-color: #dadbcc;
+}
+
+.egreso-detalle{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}

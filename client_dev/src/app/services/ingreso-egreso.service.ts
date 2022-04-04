@@ -29,4 +29,24 @@ export class IngresoEgresoService {
       headers: headers,
     });
   }
+
+  getIngresosEgresos(token: string): Observable<any> {
+    let headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', token);
+
+    return this._http.get(this.url + 'get-ingreso-egreso', {
+      headers: headers,
+    });
+  }
+
+  deleteIngresoEgreso(token: string, id: string): Observable<any> {
+    let headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('Authorization', token);
+
+    return this._http.delete(this.url + 'delete-ingreso-egreso/' + id, {
+      headers: headers,
+    });
+  }
 }

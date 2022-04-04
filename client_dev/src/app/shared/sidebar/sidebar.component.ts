@@ -5,6 +5,7 @@ import { AppState } from 'src/app/app.reducer';
 import { AuthService } from 'src/app/services/auth.service';
 import { Global } from 'src/app/services/Global';
 import * as authActions from '../../auth/auth.actions';
+import * as ingresoEgresoActions from '../../ingreso-egreso/ingreso-egreso.actions';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,6 +16,7 @@ export class SidebarComponent implements OnInit {
   public identity;
   public token;
   public url;
+  public nombre: string = '';
 
   constructor(
     private _authService: AuthService,
@@ -27,13 +29,18 @@ export class SidebarComponent implements OnInit {
     this.url = Global.url;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store
+      .select('user')
+      .subscribe(({ user }) => (this.nombre = user.name));
+  }
 
   logout() {
     localStorage.clear();
     this.identity = '';
     this.token = '';
     this.store.dispatch(authActions.unSetUser());
+    this.store.dispatch(ingresoEgresoActions.unSetItems());
     this._router.navigate(['/login']);
   }
 }

@@ -16,5 +16,10 @@ router.get(
   md_auth.authenticated,
   IngresoEgresoController.getIngresoEgreso
 );
+router.delete(
+  "/delete-ingreso-egreso/:id",
+  md_auth.authenticated,
+  IngresoEgresoController.deleteIngresoEgreso
+);
 
 module.exports = router;

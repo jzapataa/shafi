@@ -62,7 +62,30 @@ function getIngresoEgreso(req, res) {
   });
 }
 
+function deleteIngresoEgreso(req, res) {
+  var id = req.params.id;
+
+  IngresoEgreso.findByIdAndRemove(id, (err, ingresoEgresoRemoved) => {
+    if (err) {
+      return res.status(500).send({
+        message: "No se ha podido borrar el Ingreso/Egreso",
+      });
+    }
+
+    if (!ingresoEgresoRemoved) {
+      return res.status(404).send({
+        message: "No se puede eliminar ese Ingreso/Egreso",
+      });
+    }
+
+    return res.status(200).send({
+      ingresoEgresoRemoved,
+    });
+  });
+}
+
 module.exports = {
   addIngresoEgreso,
   getIngresoEgreso,
+  deleteIngresoEgreso,
 };
