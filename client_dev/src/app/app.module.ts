@@ -24,7 +24,6 @@ import { AuthModule } from './auth/auth.module';
       logOnly: environment.production,
     }),
   ],
-  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
