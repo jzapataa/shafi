@@ -11,6 +11,6 @@ mongoose
     console.log("La conexión a la BBDD se ha realizado correctamente");
 
     app.listen(port, () => {
-      console.log("Servidor corriendo en http://localhost:3700");
+      console.log("Servidor corriendo en http://165.227.130.7:3700");
     });
   });
